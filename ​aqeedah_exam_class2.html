@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="ml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>അഖീദ - ക്ലാസ് 2 (അർദ്ദവാർഷിക പരീക്ഷ)</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f4f8;
+            margin: 0;
+            padding: 10px;
+            color: #333;
+        }
+        .container {
+            max-width: 700px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        h2 {
+            text-align: center;
+            color: #0b5ed7;
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+        }
+        p.sub {
+            text-align: center;
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        .total-mark {
+            text-align: center;
+            color: #d63384;
+            font-weight: bold;
+            margin-bottom: 20px;
+            font-size: 1rem;
+        }
+        .student-info {
+            background: #e9ecef;
+            padding: 12px;
+            border-radius: 6px;
+            margin-bottom: 20px;
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        .student-info input {
+            flex: 1;
+            padding: 8px;
+            font-size: 0.95rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .section-title {
+            background: #0b5ed7;
+            color: white;
+            padding: 8px 12px;
+            border-radius: 5px;
+            font-size: 0.95rem;
+            margin-top: 20px;
+            margin-bottom: 12px;
+        }
+        .question-box {
+            margin-bottom: 15px;
+            padding: 10px;
+            background: #fdfdfe;
+            border: 1px solid #e1e4e8;
+            border-radius: 6px;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+        .question-box input[type="text"] {
+            padding: 6px;
+            font-size: 0.9rem;
+            border: 1px solid #bbb;
+            border-radius: 4px;
+            width: 95%;
+            margin-top: 5px;
+        }
+        .options-hint {
+            font-size: 0.85rem;
+            color: #d63384;
+            background: #f8f9fa;
+            padding: 8px;
+            border-radius: 4px;
+            margin-bottom: 10px;
+            border: 1px dashed #d63384;
+        }
+        .submit-btn {
+            width: 100%;
+            background-color: #25D366;
+            color: white;
+            border: none;
+            padding: 12px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            border-radius: 6px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        .submit-btn:hover {
+            background-color: #1ebe5d;
+        }
+        #resultCard {
+            display: none;
+            margin-top: 20px;
+            padding: 15px;
+            background: #d1e7dd;
+            color: #0f5132;
+            border: 1px solid #badbcc;
+            border-radius: 6px;
+            text-align: center;
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+        .correct { border-left: 5px solid #198754; }
+        .incorrect { border-left: 5px solid #dc3545; }
+        .feedback { font-size: 0.85rem; margin-top: 5px; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>ബദ്റുൽ ഹുദാ മദ്റസ പൊറോപാട്</h2>
+    <p class="sub">അഖീദ - ക്ലാസ് 2 (അർദ്ദവാർഷിക പരീക്ഷ)</p>
+    <div class="total-mark">ആകെ മാർക്ക്: 50</div>
+
+    <div class="student-info">
+        <label for="studentName" style="font-weight:bold;">കുട്ടിയുടെ പേര്:</label>
+        <input type="text" id="studentName" placeholder="പേര് ഇവിടെ എഴുതുക...">
+    </div>
+
+    <form id="quizForm" onsubmit="evaluateExam(event)">
+
+        <!-- Section I -->
+        <div class="section-title">I. യോജിച്ചവ ചേർക്കാം (5 × 2 = 10)</div>
+        <div class="options-hint">
+            <strong>സഹായ വാക്കുകൾ:</strong><br>
+            അല്ലാഹുവിന്റെ കിതാബുകളിൽ വിശ്വസിക്കൽ | മലക്കുകൾ | അല്ലാഹുവാണ് | അവസാന നാൾ | സ്വല്ലല്ലാഹു അലൈഹി വസല്ലം (ﷺ)
+        </div>
+
+        <div class="question-box" id="q1_box">
+            1. ഈ ലോകം നശിച്ചതിന് ശേഷമുള്ള ദിവസമാണ് ....................<br>
+            <input type="text" id="q1" placeholder="ഉത്തരം എഴുതുക">
+            <div class="feedback" id="fb1"></div>
+        </div>
+
+        <div class="question-box" id="q2_box">
+            2. നമ്മുടെ നബിയുടെ പേര് കേൾക്കുമ്പോൾ നാം .................... എന്ന് പറയണം.<br>
+            <input type="text" id="q2" placeholder="ഉത്തരം എഴുതുക">
+            <div class="feedback" id="fb2"></div>
+        </div>
+
+        <div class="question-box" id="q3_box">
+            3. ഭൂമി പടച്ചത് ....................<br>
+            <input type="text" id="q3" placeholder="ഉത്തരം എഴുതുക">
+            <div class="feedback" id="fb3"></div>
+        </div>
+
+        <div class="question-box" id="q4_box">
+            4. ഈമാൻ കാര്യങ്ങളിൽ മൂന്നാമത്തേത് ....................<br>
+            <input type="text" id="q4" placeholder="ഉത്തരം എഴുതുക">
+            <div class="feedback" id="fb4"></div>
+        </div>
+
+        <div class="question-box" id="q5_box">
+            5. അല്ലാഹു പ്രകാശം കൊണ്ട് സൃഷ്ടിച്ചവരാണ് ....................<br>
+            <input type="text" id="q5" placeholder="ഉത്തരം എഴുതുക">
+            <div class="feedback" id="fb5"></div>
+        </div>
+
+
+        <!-- Section II -->
+        <div class="section-title">II. നബി ﷺ യെക്കുറിച്ച് വയസ്സ് എഴുതാം (3 × 2 = 6)</div>
+        
+        <div class="question-box" id="q6_box">
+            1. നബുവ്വത്ത് ലഭിച്ചപ്പോൾ: ....................<br>
+            <input type="text" id="q6" placeholder="ഉത്തരം എഴുതുക">
+            <div class="feedback" id="fb6"></div>
+        </div>
+
+        <div class="question-box" id="q7_box">
+            2. മക്കയിൽ നിന്ന് മദീനയിലേക്ക് ഹിജ്റ പോകുമ്പോൾ: ....................<br>
+            <input type="text" id="q7" placeholder="ഉത്തരം എഴുതുക">
+            <div class="feedback" id="fb7"></div>
+        </div>
+
+        <div class="question-box" id="q8_box">
+            3. മദീനയിൽ വഫാതാകുമ്പോൾ: ....................<br>
+            <input type="text" id="q8" placeholder="ഉത്തരം എഴുതുക">
+            <div class="feedback" id="fb8"></div>
+        </div>
+
+
+        <!-- Section III -->
+        <div class="section-title">III. വ്യക്തമാക്കാം (3 × 2 = 6)</div>
+        
+        <div class="question-box" id="q9_box">
+            1. നബി ﷺ യുടെ മാതാവ്: ....................<br>
+            <input type="text" id="q9" placeholder="ഉത്തരം എഴുതുക">
+            <div class="feedback" id="fb9"></div>
+        </div>
+
+        <div class="question-box" id="q10_box">
+            2. നബി ﷺ യുടെ പിതാവ്: ....................<br>
+            <input type="text" id="q10" placeholder="ഉത്തരം എഴുതുക">
+            <div class="feedback" id="fb10"></div>
+        </div>
+
+        <div class="question-box" id="q11_box">
+            3. നബി ﷺ യുടെ ജന്മ സ്ഥലം: ....................<br>
+            <input type="text" id="q11" placeholder="ഉത്തരം എഴുതുക">
+            <div class="feedback" id="fb11"></div>
+        </div>
+
+
+        <!-- Section IV -->
+        <div class="section-title">IV. പൂർത്തിയാക്കാം (6 × 2 = 12)</div>
+        
+        <div class="question-box" id="q12_box">
+            • ആദം (അ) : ഏട് [10]<br>
+            1. .................... : ഏട് [30]<br>
+            <input type="text" id="q12" placeholder="ഉത്തരം എഴുതുക">
+            <div class="feedback" id="fb12"></div>
+        </div>
+
+        <div class="question-box" id="q13_box">
+            2. .................... : ഏട് [50]<br>
+            <input type="text" id="q13" placeholder="ഉത്തരം എഴുതുക">
+            <div class="feedback" id="fb13"></div>
+        </div>
+
+        <div class="question-box" id="q14_box">
+            3. .................... : ഏട് [10]<br>
+            <input type="text" id="q14" placeholder="ഉത്തരം എഴുതുക">
+            <div class="feedback" id="fb14"></div>
+        </div>
+
+        <div class="question-box" id="q15_box">
+            • മുഹമ്മദ് (സ) : ഖുർആൻ<br>
+            1. .................... : തൗറാത്ത്<br>
+            <input type="text" id="q15" placeholder="ഉത്തരം എഴുതുക">
+            <div class="feedback" id="fb15"></div>
+        </div>
+
+        <div class="question-box" id="q16_box">
+            2. .................... : സബൂർ<br>
+            <input type="text" id="q16" placeholder="ഉത്തരം എഴുതുക">
+            <div class="feedback" id="fb16"></div>
+        </div>
+
+        <div class="question-box" id="q17_box">
+            3. .................... : ഇൻജീൽ<br>
+            <input type="text" id="q17" placeholder="ഉത്തരം എഴുതുക">
+            <div class="feedback" id="fb17"></div>
+        </div>
+
+
+        <!-- Section V -->
+        <div class="section-title">V. ഉത്തരം എഴുതാം (2 × 3 = 6)</div>
+        
+        <div class="question-box" id="q18_box">
+            1. എപ്പോഴാണ് ഈ ലോകം നശിക്കുക?<br>
+            <input type="text" id="q18" placeholder="ഉത്തരം എഴുതുക">
+            <div class="feedback" id="fb18"></div>
+        </div>
+
+        <div class="question-box" id="q19_box">
+            2. നബിമാർ എന്ന് പറയുന്നു ആർക്ക്?<br>
+            <input type="text" id="q19" placeholder="ഉത്തരം എഴുതുക">
+            <div class="feedback" id="fb19"></div>
+        </div>
+
+
+        <!-- Section VI -->
+        <div class="section-title">VI. പൂർത്തിയാക്കാം (5 × 2 = 10)</div>
+        
+        <div class="question-box" id="q20_box">
+            1. ആരാധനക്ക് അർഹൻ അല്ലാഹു അല്ലാതെ ....................<br>
+            <input type="text" id="q20" placeholder="ഉത്തരം എഴുതുക">
+            <div class="feedback" id="fb20"></div>
+        </div>
+
+        <div class="question-box" id="q21_box">
+            2. മലക്കുകൾ എപ്പോഴും അല്ലാഹുവിന്ന് ....................<br>
+            <input type="text" id="q21" placeholder="ഉത്തരം എഴുതുക">
+            <div class="feedback" id="fb21"></div>
+        </div>
+
+        <div class="question-box" id="q22_box">
+            3. ജനങ്ങളെ സന്മാർഗത്തിലേക്ക് നയിക്കുന്നതാണ് അല്ലാഹു വിൻ്റെ ....................<br>
+            <input type="text" id="q22" placeholder="ഉത്തരം എഴുതുക">
+            <div class="feedback" id="fb22"></div>
+        </div>
+
+        <div class="question-box" id="q23_box">
+            4. നബിമാരിൽ പ്രധാനികളാണ് ....................<br>
+            <input type="text" id="q23" placeholder="ഉത്തരം എഴുതുക">
+            <div class="feedback" id="fb23"></div>
+        </div>
+
+        <div class="question-box" id="q24_box">
+            5. സൂറിൽ രണ്ടാമത് ഊതുമ്പോൾ മരിച്ചവരെല്ലാം ....................<br>
+            <input type="text" id="q24" placeholder="ഉത്തരം എഴുതുക">
+            <div class="feedback" id="fb24"></div>
+        </div>
+
+        <button type="submit" class="submit-btn">📝 പരീക്ഷ സമർപ്പിച്ച് മാർക്ക് നോക്കുക</button>
+    </form>
+
+    <div id="resultCard"></div>
+</div>
+
+<script>
+    // ഉത്തരങ്ങൾ കൃത്യമായി പരിശോധിക്കാൻ (ചെറിയ സ്പെല്ലിംഗ് വ്യത്യാസങ്ങൾ വന്നാലും ശരിയാക്കാൻ കണക്കാക്കാം)
+    function cleanText(txt) {
+        return txt.trim().toLowerCase().replace(/[\sﷺ(അ)(സ)]/g, "");
+    }
+
+    const answers = {
+        q1: ["അവസാനനാൾ", "അവസാന നാൾ"],
+        q2: ["സ്വല്ലല്ലാഹുഅലൈഹിവസല്ലം", "സ്വല്ലല്ലാഹു അലൈഹിവസല്ലം", "സ", "സല്ലം"],
+        q3: ["അല്ലാഹുവാണ്", "അല്ലാഹു"],
+        q4: ["അല്ലാഹുവിന്റെകിതാബുകളിൽവിശ്വസിക്കൽ", "കിതാബുകളിൽ വിശ്വസിക്കൽ", "കിതാബുകളിൽവിശ്വസിക്കൽ"],
+        q5: ["മലക്കുകൾ"],
+        q6: ["40", "നാല്പത്", "നാൽപ്പത്"],
+        q7: ["53", "അമ്പത്തിമൂന്ന്"],
+        q8: ["63", "അറുപത്തിമൂന്ന്"],
+        q9: ["ആമിന", "ആമിനബീവി"],
+        q10: ["അബ്ദുല്ല"],
+        q11: ["മക്ക"],
+        q12: ["ഷീഥ്", "ഷീത് (അ)", "ഷീത്"],
+        q13: ["ഇദ്‌രീസ്", "ഇദ്രിസ്", "ഇദ്റീസ്"],
+        q14: ["ഇബ്‌റാഹീം", "ഇബ്രാഹിം", "ഇബ്രാഹീം (അ)"],
+        q15: ["മൂസാ", "മൂസാ (അ)", "മൂസാ നബി"],
+        q16: ["ദാവൂദ്", "ദാവൂദ് (അ)"],
+        q17: ["ഈസാ", "ഈസാ (അ)", "ഈസാ നബി"],
+        q18: ["അന്ത്യനാളിൽ", "ലോകാവസാനത്തിൽ", "ഖിയാമത്ത് നാളിൽ", "അല്ലാഹു ഉദ്ദേശിക്കുമ്പോൾ"], // വിവരണം സ്വീകാര്യം
+        q19: ["സന്മാർഗ്ഗം പഠിപ്പിക്കാൻ", "സന്മാർഗം പഠിപ്പിക്കാൻ നിയോഗിക്കപ്പെട്ടവർ", "പ്രവാചകൻമാർ"],
+        q20: ["ഇല്ല", "മറ്റാര്മില്ല"],
+        q21: ["നൂർ", "കീഴ്‍പ്പെടുന്നു", "വഴങ്ങുന്നു", "ഇബാദത്ത് ചെയ്യുന്നു"],
+        q22: ["വേദങ്ങൾ", "സന്ദേശം", "പ്രവാചകന്മാർ"],
+        q23: ["റസൂലുകൾ", "മുൻകഴിഞ്ഞ നബിമാർ", "പ്രവാചകർ"],
+        q24: ["ജീവോടെ എഴുന്നേൽക്കും", "ഉയിർത്തെഴുന്നേൽക്കും", "പുനർജനിക്കും", "പുനരുത്ഥാനം ചെയ്യും"]
+    };
+
+    function evaluateExam(event) {
+        event.preventDefault();
+        const name = document.getElementById("studentName").value.trim();
+        if(!name) {
+            alert("ദയവായി കുട്ടിയുടെ പേര് എഴുതുക!");
+            document.getElementById("studentName").focus();
+            return;
+        }
+
+        let totalScore = 0;
+
+        // ഓരോ ചോദ്യവും ചെക്ക് ചെയ്യാം
+        for (let i = 1; i <= 24; i++) {
+            let qId = "q" + i;
+            let userVal = document.getElementById(qId).value;
+            let cleanedUserVal = cleanText(userVal);
+            let box = document.getElementById(qId + "_box");
+            let fb = document.getElementById("fb" + i);
+
+            let isCorrect = false;
+            if (answers[qId]) {
+                for (let ans of answers[qId]) {
+                    if (cleanedUserVal !== "" && cleanedUserVal.includes(cleanText(ans))) {
+                        isCorrect = true;
+                        break;
+                    }
+                }
+            }
+
+            // മാർക്ക് കണക്കുകൂട്ടൽ (ഓരോ ചോദ്യത്തിനും 2 അല്ലെങ്കിൽ 3 മാർക്ക് അനുസരിച്ച്)
+            let marksForQ = (i >= 18 && i <= 19) ? 3 : 2;
+
+            if (isCorrect) {
+                totalScore += marksForQ;
+                box.className = "question-box correct";
+                fb.style.color = "#198754";
+                fb.innerHTML = "✔ ശരിയാണ്!";
+            } else {
+                box.className = "question-box incorrect";
+                fb.style.color = "#dc3545";
+                fb.innerHTML = `✘ ശരിയായ ഉത്തരം: ${answers[qId][0]}`;
+            }
+        }
+
+        const resultCard = document.getElementById("resultCard");
+        resultCard.style.display = "block";
+        resultCard.innerHTML = `അഭിനന്ദനങ്ങൾ, ${name}!<br>നിങ്ങൾക്ക് 50-ൽ <b>${totalScore}</b> മാർക്ക് ലഭിച്ചു! 🎉`;
+        resultCard.scrollIntoView({ behavior: 'smooth' });
+    }
+</script>
+
+</body>
+</html>
