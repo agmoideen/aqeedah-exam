@@ -130,7 +130,7 @@
     <!-- STUDENT VIEW -->
     <div id="studentView">
         <h2 id="displayMadrasaName">ബദ്റുൽ ഹുദാ മദ്റസ പൊറോപാട്</h2>
-        <p class="sub" id="displayExamTitle">അഖീദ - ക്ലാസ് 2 (അർദ്ദവാർഷിക പരീക്ഷ)</p>
+        <p class="sub" id="displayExamTitle">MODEL EXAM- ക്ലാസ് 2 (അർദ്ദവാർഷിക പരീക്ഷ)</p>
         <div class="total-mark" id="displayTotalMark">ആകെ മാർക്ക്: 50</div>
 
         <div class="student-info">
@@ -150,7 +150,7 @@
     <div id="adminView" class="admin-section">
         <h2>അഡ്മിൻ പാനൽ (പരീക്ഷാ നിയന്ത്രണം)</h2>
         <div class="admin-login" id="adminLoginBox">
-            <input type="password" id="adminPass" placeholder="പാസ്‌വേഡ് നൽകുക (admin123)">
+            <input type="password" id="adminPass" placeholder="പാസ്‌വേഡ് നൽകുക (123)">
             <button class="submit-btn" onclick="checkAdminLogin()" style="margin-top:0; width:auto; padding:8px 20px;">ലോഗിൻ</button>
         </div>
 
@@ -232,7 +232,7 @@
 
     function getHeaderSettings() {
         let madrasa = localStorage.getItem('madrasa_name') || "ബദ്റുൽ ഹുദാ മദ്റസ പൊറോപാട്";
-        let exam = localStorage.getItem('exam_title') || "അഖീദ - ക്ലാസ് 2 (അർദ്ദവാർഷിക പരീക്ഷ)";
+        let exam = localStorage.getItem('exam_title') || "MODEL EXAM- ക്ലാസ് 2 (അർദ്ദവാർഷിക പരീക്ഷ)";
         return { madrasa, exam };
     }
 
