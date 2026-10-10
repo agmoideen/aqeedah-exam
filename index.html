@@ -4,9 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title id="pageTitle">അഖീദ - ക്ലാസ് 2 (അർദ്ദവാർഷിക പരീക്ഷ)</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: #f0f4f8;
             margin: 0;
             padding: 10px;
@@ -17,33 +18,33 @@
             margin: auto;
             background: white;
             padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
         }
         h2 {
             text-align: center;
-            color: #0b5ed7;
-            font-size: 1.2rem;
+            color: #0d6efd;
+            font-size: 1.3rem;
             margin-bottom: 5px;
         }
         p.sub {
             text-align: center;
-            font-size: 0.9rem;
-            color: #666;
+            font-size: 0.95rem;
+            color: #555;
             margin-bottom: 5px;
             font-weight: bold;
         }
         .total-mark {
             text-align: center;
-            color: #d63384;
+            color: #dc3545;
             font-weight: bold;
             margin-bottom: 20px;
-            font-size: 1rem;
+            font-size: 1.05rem;
         }
         .student-info, .admin-login {
             background: #e9ecef;
             padding: 12px;
-            border-radius: 6px;
+            border-radius: 8px;
             margin-bottom: 20px;
             display: flex;
             gap: 10px;
@@ -51,98 +52,100 @@
         }
         .student-info input, .admin-login input {
             flex: 1;
-            padding: 8px;
-            font-size: 0.95rem;
+            padding: 10px;
+            font-size: 1rem;
             border: 1px solid #ccc;
-            border-radius: 4px;
+            border-radius: 6px;
         }
         .section-title {
-            background: #0b5ed7;
+            background: #0d6efd;
             color: white;
-            padding: 8px 12px;
-            border-radius: 5px;
-            font-size: 0.95rem;
+            padding: 10px 14px;
+            border-radius: 6px;
+            font-size: 1rem;
             margin-top: 20px;
             margin-bottom: 12px;
         }
         .question-box {
             margin-bottom: 15px;
-            padding: 10px;
+            padding: 12px;
             background: #fdfdfe;
             border: 1px solid #e1e4e8;
-            border-radius: 6px;
-            font-size: 0.95rem;
-            line-height: 1.5;
+            border-radius: 8px;
+            font-size: 1rem;
+            line-height: 1.6;
         }
         .question-box input[type="text"], .question-box select {
-            padding: 6px;
-            font-size: 0.9rem;
+            padding: 8px;
+            font-size: 0.95rem;
             border: 1px solid #bbb;
-            border-radius: 4px;
+            border-radius: 6px;
             width: 95%;
-            margin-top: 5px;
+            margin-top: 8px;
         }
         .options-group {
-            margin-top: 8px;
+            margin-top: 10px;
             display: flex;
             flex-direction: column;
-            gap: 5px;
+            gap: 8px;
         }
-        .submit-btn, .admin-action-btn {
+        .submit-btn, .admin-action-btn, .download-btn {
             width: 100%;
-            background-color: #25D366;
+            background-color: #198754;
             color: white;
             border: none;
-            padding: 12px;
-            font-size: 1.1rem;
+            padding: 14px;
+            font-size: 1.15rem;
             font-weight: bold;
-            border-radius: 6px;
+            border-radius: 8px;
             cursor: pointer;
             margin-top: 20px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
         }
         .admin-action-btn { background-color: #6c757d; }
-        .submit-btn:hover { background-color: #1ebe5d; }
-        
-        /* കോൺഗ്രാജുലേഷൻ പോസ്റ്റർ കാർഡ് ഡിസൈൻ */
+        .download-btn { background-color: #0d6efd; display: none; }
+        .submit-btn:hover { background-color: #157347; }
+        .download-btn:hover { background-color: #0b5ed7; }
+
+        /* പുതിയ നീലയും വെള്ളയും കലർന്ന ആകർഷകമായ പോസ്റ്റർ ഡിസൈൻ */
         #resultCard {
             display: none;
             margin-top: 25px;
-            background: linear-gradient(135deg, #11998e, #38ef7d);
+            background: linear-gradient(135deg, #0d6efd, #0dcaf0);
             color: white;
-            padding: 25px;
-            border-radius: 12px;
+            padding: 30px 20px;
+            border-radius: 16px;
             text-align: center;
-            box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+            box-shadow: 0 8px 25px rgba(13, 110, 253, 0.3);
+            border: 4px solid #ffffff;
         }
-        .poster-header { font-size: 1rem; font-weight: bold; opacity: 0.9; margin-bottom: 5px; text-transform: uppercase; }
-        .poster-title { font-size: 1.4rem; font-weight: bold; margin-bottom: 15px; }
-        .poster-name { font-size: 1.3rem; background: rgba(255,255,255,0.2); padding: 8px; border-radius: 6px; margin-bottom: 15px; font-weight: bold; }
-        .poster-score-box { display: flex; justify-content: center; gap: 20px; margin-bottom: 15px; background: rgba(0,0,0,0.1); padding: 12px; border-radius: 8px; }
-        .score-item { font-size: 1.1rem; }
-        .poster-grade { font-size: 1.2rem; font-weight: bold; color: #ffeb3b; margin-bottom: 15px; }
-        .poster-msg { font-size: 1rem; line-height: 1.5; background: rgba(255,255,255,0.15); padding: 10px; border-radius: 6px; }
+        .poster-madrasa { font-size: 1.1rem; font-weight: bold; letter-spacing: 0.5px; margin-bottom: 8px; text-transform: uppercase; color: #f8f9fa; text-shadow: 1px 1px 2px rgba(0,0,0,0.2); }
+        .poster-title { font-size: 1.5rem; font-weight: 800; margin-bottom: 20px; color: #ffffff; text-shadow: 1px 1px 3px rgba(0,0,0,0.3); }
+        .poster-name { font-size: 1.4rem; background: rgba(255, 255, 255, 0.2); padding: 12px; border-radius: 10px; margin-bottom: 20px; font-weight: bold; backdrop-filter: blur(5px); }
+        .poster-score-box { display: flex; justify-content: space-around; margin-bottom: 20px; background: rgba(0, 0, 0, 0.15); padding: 15px; border-radius: 10px; }
+        .score-item { font-size: 1.1rem; font-weight: 600; }
+        .poster-grade { font-size: 1.3rem; font-weight: 800; color: #ffc107; margin-bottom: 20px; text-shadow: 1px 1px 2px rgba(0,0,0,0.3); }
+        .poster-msg { font-size: 1.05rem; line-height: 1.6; background: rgba(255, 255, 255, 0.15); padding: 15px; border-radius: 10px; font-weight: 500; }
 
-        .correct { border-left: 5px solid #198754; }
-        .incorrect { border-left: 5px solid #dc3545; }
-        .feedback { font-size: 0.85rem; margin-top: 5px; font-weight: bold; }
+        .correct { border-left: 6px solid #198754; }
+        .incorrect { border-left: 6px solid #dc3545; }
+        .feedback { font-size: 0.9rem; margin-top: 6px; font-weight: bold; }
         .admin-section { display: none; }
-        .delete-btn { background: #dc3545; color: white; border: none; padding: 5px 10px; border-radius: 4px; cursor: pointer; margin-top: 5px; margin-right: 5px; }
-        .edit-btn { background: #ffc107; color: #000; border: none; padding: 5px 10px; border-radius: 4px; cursor: pointer; margin-top: 5px; font-weight: bold; }
+        .delete-btn { background: #dc3545; color: white; border: none; padding: 6px 12px; border-radius: 6px; cursor: pointer; margin-top: 8px; margin-right: 6px; font-weight: bold; }
+        .edit-btn { background: #ffc107; color: #000; border: none; padding: 6px 12px; border-radius: 6px; cursor: pointer; margin-top: 8px; font-weight: bold; }
         
         @media print {
-            .admin-section, .submit-btn, .student-info, .admin-login {
+            .admin-section, .submit-btn, .student-info, .admin-login, .download-btn {
                 display: none !important;
             }
             body { background: white; }
             .container { box-shadow: none; max-width: 100%; }
-            #resultCard { background: #f8f9fa !important; color: #000 !important; border: 2px solid #000; }
         }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <!-- STUDENT VIEW -->
     <div id="studentView">
         <h2 id="displayMadrasaName">ബദ്റുൽ ഹുദാ മദ്റസ പൊറോപാട്</h2>
         <p class="sub" id="displayExamTitle">അഖീദ - ക്ലാസ് 2 (അർദ്ദവാർഷിക പരീക്ഷ)</p>
@@ -158,26 +161,26 @@
             <button type="submit" class="submit-btn">📝 പരീക്ഷ സമർപ്പിച്ച് മാർക്ക് നോക്കുക</button>
         </form>
 
-        <!-- അഭിനന്ദന പോസ്റ്റർ കാർഡ് -->
         <div id="resultCard">
-            <div class="poster-header" id="posterMadrasa">ബദ്റുൽ ഹുദാ മദ്റസ പൊറോപാട്</div>
-            <div class="poster-title">✨ അഭിനന്ദന പോസ്റ്റർ ✨</div>
-            <div class="poster-name" id="posterName">അഭിനന്ദനങ്ങൾ, [കുട്ടിയുടെ പേര്]!</div>
+            <div class="poster-madrasa" id="posterMadrasa">ബദ്റുൽ ഹുദാ മദ്റസ പൊറോപാട്</div>
+            <div class="poster-title">🌟 അഭിനന്ദനങ്ങൾ 🌟</div>
+            <div class="poster-name" id="posterName">അബു</div>
             <div class="poster-score-box">
-                <div class="score-item">ലഭിച്ച മാർക്ക്: <b id="posterScore">0</b> / <span id="posterMaxScore">0</span></div>
-                <div class="score-item">ശതമാനം: <b id="posterPercent">0%</b></div>
+                <div class="score-item">ലഭിച്ച മാർക്ക്: <br><span id="posterScore" style="font-size:1.3rem;">46</span> / <span id="posterMaxScore">50</span></div>
+                <div class="score-item">ശതമാനം: <br><span id="posterPercent" style="font-size:1.3rem;">92%</span></div>
             </div>
-            <div class="poster-grade" id="posterGrade">ഗ്രേഡ്: A+</div>
-            <div class="poster-msg">മദ്റസ പരീക്ഷ വിജയകരമായി പൂർത്തിയാക്കിയതിൽ അഭിനന്ദനങ്ങൾ! തുടർപഠനങ്ങളിൽ എല്ലാവിധ വിജയങ്ങളും ആശംസിക്കുന്നു. 🌟</div>
+            <div class="poster-grade" id="posterGrade">ഗ്രേഡ്: A+ (Outstanding)</div>
+            <div class="poster-msg">മദ്റസ പരീക്ഷ വിജയകരമായി പൂർത്തിയാക്കിയതിൽ അഭിനന്ദനങ്ങൾ! തുടർപഠനങ്ങളിൽ എല്ലാവിധ വിജയങ്ങളും ആശംസിക്കുന്നു. 🎓✨</div>
         </div>
+
+        <button type="button" class="download-btn" id="downloadPosterBtn" onclick="downloadPosterImage()">📥 പോസ്റ്റർ ഗാലറിയിൽ സേവ് ചെയ്യുക</button>
     </div>
 
-    <!-- ADMIN VIEW -->
     <div id="adminView" class="admin-section">
         <h2>അഡ്മിൻ പാനൽ (പരീക്ഷാ നിയന്ത്രണം)</h2>
         <div class="admin-login" id="adminLoginBox">
             <input type="password" id="adminPass" placeholder="പാസ്‌വേഡ് നൽകുക (admin123)">
-            <button class="submit-btn" onclick="checkAdminLogin()" style="margin-top:0; width:auto; padding:8px 20px;">ലോഗിൻ</button>
+            <button class="submit-btn" onclick="checkAdminLogin()" style="margin-top:0; width:auto; padding:10px 20px;">ലോഗിൻ</button>
         </div>
 
         <div id="adminPanelContent" style="display:none;">
@@ -189,20 +192,20 @@
                 <input type="text" id="inputMadrasaName" value="ബദ്റുൽ ഹുദാ മദ്റസ പൊറോപാട്"><br><br>
                 <label>പരീക്ഷയുടെ പേര് / വിഷയം / ക്ലാസ്:</label><br>
                 <input type="text" id="inputExamTitle" value="അഖീദ - ക്ലാസ് 2 (അർദ്ദവാർഷിക പരീക്ഷ)"><br><br>
-                <button class="admin-action-btn" onclick="saveHeaderSettings()" style="background: #0b5ed7;">✔ ഹെഡിങ് സേവ് ചെയ്യുക</button>
+                <button class="admin-action-btn" onclick="saveHeaderSettings()" style="background: #0d6efd;">✔ ഹെഡിങ് സേവ് ചെയ്യുക</button>
             </div>
 
             <div class="section-title">PDF പ്രിന്റ് / ഡൗൺലോഡ് ചെയ്യുക</div>
             <div class="question-box" style="display: flex; gap: 10px; flex-wrap: wrap;">
                 <button class="admin-action-btn" onclick="downloadStudentPDF()" style="background: #198754; flex: 1; min-width: 200px;">📥 ചോദ്യപേപ്പർ മാത്രം PDF എടുക്കുക</button>
-                <button class="admin-action-btn" onclick="downloadAnswerKeyPDF()" style="background: #d63384; flex: 1; min-width: 200px;">📥 ഉത്തരസഹിതം (Answer Key) PDF എടുക്കുക</button>
+                <button class="admin-action-btn" onclick="downloadAnswerKeyPDF()" style="background: #dc3545; flex: 1; min-width: 200px;">📥 ഉത്തരസഹിതം (Answer Key) PDF എടുക്കുക</button>
             </div>
 
             <div class="section-title" id="formTitleText">പുതിയ ചോദ്യം ചേർക്കാം</div>
             <div class="question-box">
                 <input type="hidden" id="editIndex" value="-1">
                 <label>ചോദ്യത്തിന്റെ തരം (Question Type):</label><br>
-                <select id="newQType" onchange="toggleOptionsInput()" style="width:100%; padding:6px; margin-top:5px; margin-bottom:10px;">
+                <select id="newQType" onchange="toggleOptionsInput()" style="width:100%; padding:8px; margin-top:5px; margin-bottom:12px;">
                     <option value="mcq">മൾട്ടിപ്പിൾ ചോയ്സ് (Multiple Choice / Options)</option>
                     <option value="short">ഷോർട്ട് ആൻസർ (Short Answer / Fill in the blanks)</option>
                 </select>
@@ -219,9 +222,9 @@
                 <input type="text" id="newQAns" placeholder="ശരിയായ ഓപ്ഷൻ കൃത്യമായി ടൈപ്പ് ചെയ്യുക"><br><br>
                 
                 <label>മാർക്ക്:</label><br>
-                <input type="text" id="newQMark" value="2" style="width: 50px;"><br><br>
+                <input type="text" id="newQMark" value="2" style="width: 60px;"><br><br>
                 
-                <button class="admin-action-btn" id="saveBtn" onclick="saveOrUpdateQuestion()" style="background: #0b5ed7;">+ ചോദ്യം ആഡ് ചെയ്യുക</button>
+                <button class="admin-action-btn" id="saveBtn" onclick="saveOrUpdateQuestion()" style="background: #0d6efd;">+ ചോദ്യം ആഡ് ചെയ്യുക</button>
                 <button class="admin-action-btn" id="cancelEditBtn" onclick="resetForm()" style="background: #6c757d; display:none; margin-top:5px;">റദ്ദാക്കുക</button>
             </div>
 
@@ -262,12 +265,12 @@
     ];
 
     function getStoredQuestions() {
-        let saved = localStorage.getItem('madrassa_aqeedah_final_v3');
+        let saved = localStorage.getItem('madrassa_aqeedah_final_v4');
         return saved ? JSON.parse(saved) : defaultQuestions;
     }
 
     function saveQuestions(questions) {
-        localStorage.setItem('madrassa_aqeedah_final_v3', JSON.stringify(questions));
+        localStorage.setItem('madrassa_aqeedah_final_v4', JSON.stringify(questions));
     }
 
     function getHeaderSettings() {
@@ -461,7 +464,7 @@
         document.getElementById('editIndex').value = "-1";
         document.getElementById('formTitleText').innerText = "പുതിയ ചോദ്യം ചേർക്കാം";
         document.getElementById('saveBtn').innerText = "+ ചോദ്യം ആഡ് ചെയ്യുക";
-        document.getElementById('saveBtn').style.background = "#0b5ed7";
+        document.getElementById('saveBtn').style.background = "#0d6efd";
         document.getElementById('saveBtn').style.color = "#fff";
         document.getElementById('cancelEditBtn').style.display = "none";
     }
@@ -477,7 +480,7 @@
 
     function resetToDefault() {
         if(confirm("ഡീഫോൾട്ട് ചോദ്യങ്ങളിലേക്ക് റീസെറ്റ് ചെയ്യണമെന്നുണ്ടോ?")) {
-            localStorage.removeItem('madrassa_aqeedah_final_v3');
+            localStorage.removeItem('madrassa_aqeedah_final_v4');
             loadAdminQuestionsList();
             resetForm();
             alert("റീസെറ്റ് ചെയ്തിരിക്കുന്നു!");
@@ -543,7 +546,7 @@
                 <style>
                     body { font-family: Arial, sans-serif; padding: 20px; color: #000; }
                     h2, p { text-align: center; margin: 5px 0; }
-                    .header-key { text-align: center; color: #d63384; font-weight: bold; margin: 15px 0; font-size: 1.2rem; }
+                    .header-key { text-align: center; color: #0d6efd; font-weight: bold; margin: 15px 0; font-size: 1.2rem; }
                     .q-box { margin-bottom: 15px; font-size: 1rem; line-height: 1.5; border-bottom: 1px dashed #ccc; padding-bottom: 8px; }
                     .ans { color: #198754; font-weight: bold; }
                 </style>
@@ -567,6 +570,17 @@
         printWindow.document.write(html);
         printWindow.document.close();
         setTimeout(() => { printWindow.print(); }, 500);
+    }
+
+    // പോസ്റ്റർ ഇമേജ് ആയി ഫോണിലേക്ക് ഡൗൺലോഡ് ചെയ്യാനുള്ള ഫങ്ഷൻ
+    function downloadPosterImage() {
+        let card = document.getElementById("resultCard");
+        html2canvas(card, { scale: 2 }).then(canvas => {
+            let link = document.createElement('a');
+            link.download = 'exam-score-poster.png';
+            link.href = canvas.toDataURL('image/png');
+            link.click();
+        });
     }
 
     function evaluateExam(event) {
@@ -628,7 +642,6 @@
             }
         });
 
-        // ശതമാനവും ഗ്രേഡും കണക്കാക്കൽ
         let percentage = maxPossibleScore > 0 ? Math.round((totalScore / maxPossibleScore) * 100) : 0;
         let grade = "C";
         if(percentage >= 90) grade = "A+ (Outstanding)";
@@ -641,7 +654,7 @@
 
         let settings = getHeaderSettings();
         document.getElementById("posterMadrasa").innerText = settings.madrasa;
-        document.getElementById("posterName").innerText = `അഭിനന്ദനങ്ങൾ, ${name}! 🎉`;
+        document.getElementById("posterName").innerText = `${name}`;
         document.getElementById("posterScore").innerText = totalScore;
         document.getElementById("posterMaxScore").innerText = maxPossibleScore;
         document.getElementById("posterPercent").innerText = percentage + "%";
@@ -649,6 +662,10 @@
 
         const resultCard = document.getElementById("resultCard");
         resultCard.style.display = "block";
+        
+        // ഡൗൺലോഡ് ബട്ടൺ ദൃശ്യമാക്കുക
+        document.getElementById("downloadPosterBtn").style.display = "block";
+
         resultCard.scrollIntoView({ behavior: 'smooth' });
     }
 
